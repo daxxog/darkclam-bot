@@ -4,3 +4,4 @@ npm-debug.log
 .DS_Store
 ._.DS_Store
 cli.min.js
+dump.rdb

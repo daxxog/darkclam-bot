@@ -35,7 +35,7 @@
             bot = new Parent(botconfig),
             client = redis.createClient(redisconfig),
             ec = DarkclamBot.ERROR_CODES,
-            consoleTest = true;
+            consoleTest = false;
         
         if(typeof eh !== 'function') {
             eh = function(err, pos) {

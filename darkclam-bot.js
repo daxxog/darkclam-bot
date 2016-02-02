@@ -30,7 +30,7 @@
         DarkclamBot;
     
     //super hack
-    DarkclamBot = function(botconfig, redisconfig, eh) {
+    DarkclamBot = function(_public, botconfig, redisconfig, eh) {
         var Parent = DarkclamBot.super_,
             bot = new Parent(botconfig),
             client = redis.createClient(redisconfig),
@@ -55,7 +55,7 @@
         
         var chatmsg = async.queue(function(msg, callback) {
             if(!consoleTest) {
-                bot.chat(msg);
+                _public.chat(msg);
             } else {
                 console.log(msg);
             }

@@ -148,7 +148,7 @@
                             txt: '4) /msg ' + bot.uid + ' [XCP address]'
                         });
                     }
-                } else {
+                } else if(S(msg.user).s !== S(bot.uid).s) { //prevent loops
                     infomsg.push({
                         to: msg.user,
                         txt: '3) create an XCP wallet; https://wallet.counterwallet.io/'

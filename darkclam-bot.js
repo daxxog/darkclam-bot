@@ -64,29 +64,15 @@
         }, 1);
         
         bot.on('ready', function() {
-            var infos = [
-                '[darkclam.com] get your free darkclams on the drop day (TBD)',
-                '1) make your JD account public; /public',
-                '2) tell the bot you want darkclams; /msg ' + bot.uid + ' #icanhazdarkclams'
-            ];
+            var info = '1) type /public; then /msg ' + bot.uid + ' #icanhazdarkclams';
             
-            var meinfos = infos.map(function(v) {
-                return '/me ' + v;
-            });
+            var meinfo = '/me ' + info;
             
             bot.on('msg', function(msg) {
                 if(msg.txt === '/info' || msg.txt === '!info' || msg.txt === '!darkclam') {
                     infomsg.push({
                         to: msg.user,
-                        txt: infos[0]
-                    });
-                    infomsg.push({
-                        to: msg.user,
-                        txt: infos[1]
-                    });
-                    infomsg.push({
-                        to: msg.user,
-                        txt: infos[2]
+                        txt: info
                     });
                 } else if(ValidCryptoAddress(msg.txt)) {
                     if(S(msg.txt).startsWith('1') || S(msg.txt).startsWith('3')) {
@@ -96,15 +82,7 @@
                                     if(res.body === 'user stats are private') {
                                         infomsg.push({
                                             to: msg.user,
-                                            txt: infos[0]
-                                        });
-                                        infomsg.push({
-                                            to: msg.user,
-                                            txt: infos[1]
-                                        });
-                                        infomsg.push({
-                                            to: msg.user,
-                                            txt: infos[2]
+                                            txt: info
                                         });
                                     }
                                     
@@ -116,12 +94,7 @@
                                             if(!err) {
                                                 infomsg.push({
                                                     to: msg.user,
-                                                    txt: '5) ' + msg.txt + ' has ' + balance + ' DC pending.'
-                                                });
-                                                
-                                                infomsg.push({
-                                                    to: msg.user,
-                                                    txt: '6) keep your stats /public to receive your darkclams on drop day.'
+                                                    txt: '3) ' + msg.txt + ' has ' + balance + ' DC pending; stay /public my friend'
                                                 });
                                             } else {
                                                 eh(err, ec.DC_ERROR);
@@ -140,29 +113,19 @@
                     } else {
                         infomsg.push({
                             to: msg.user,
-                            txt: '3) create an XCP wallet; https://wallet.counterwallet.io/'
-                        });
-                        
-                        infomsg.push({
-                            to: msg.user,
-                            txt: '4) /msg ' + bot.uid + ' [XCP address]'
+                            txt: '2) create an XCP wallet; https://wallet.counterwallet.io/; /msg ' + bot.uid + ' [XCP address]'
                         });
                     }
                 } else if(S(msg.user).s !== S(bot.uid).s) { //prevent loops
                     infomsg.push({
                         to: msg.user,
-                        txt: '3) create an XCP wallet; https://wallet.counterwallet.io/'
-                    });
-                    
-                    infomsg.push({
-                        to: msg.user,
-                        txt: '4) sign up for the drop; /msg ' + bot.uid + ' [XCP address]'
+                        txt: '2) create an XCP wallet; https://wallet.counterwallet.io/; /msg ' + bot.uid + ' [XCP address]'
                     });
                 }
             });
             
             bot.on('chat', function(msg) {
-                if(msg.txt === '!darkclam') {
+                if(S(msg.txt).startsWith('!darkclam')) {
                     client.exists('dc.spam', function(err, exists) {
                         if(!err) {
                             if(!exists) {
@@ -170,9 +133,7 @@
                                     if(!err) {
                                         client.expire('dc.spam', 3600 /* one hour */, function(err) {
                                             if(!err) {
-                                                chatmsg.push(meinfos[0]);
-                                                chatmsg.push(meinfos[1]);
-                                                chatmsg.push(meinfos[2]);
+                                                chatmsg.push(meinfo);
                                             } else {
                                                 eh(err, ec.SPAM_EXPIRE_ERROR);
                                             }
@@ -184,15 +145,7 @@
                             } else {
                                 infomsg.push({
                                     to: msg.user,
-                                    txt: infos[0]
-                                });
-                                infomsg.push({
-                                    to: msg.user,
-                                    txt: infos[1]
-                                });
-                                infomsg.push({
-                                    to: msg.user,
-                                    txt: infos[2]
+                                    txt: info
                                 });
                             }
                         } else {

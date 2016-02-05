@@ -131,9 +131,9 @@
                             if(!exists) {
                                 client.set('dc.spam', 1, function(err) {
                                     if(!err) {
-                                        client.expire('dc.spam', 3600 /* one hour */, function(err) {
+                                        client.expire('dc.spam', 21600 /* six hours */, function(err) {
                                             if(!err) {
-                                                chatmsg.push(meinfo);
+                                                chatmsg.push('/me first rule of darkclam: don\'t talk about !darkclam');
                                             } else {
                                                 eh(err, ec.SPAM_EXPIRE_ERROR);
                                             }

@@ -137,11 +137,6 @@
                                         eh(err, ec.SPAM_SET_ERROR);
                                     }
                                 });
-                            } else {
-                                infomsg.push({
-                                    to: msg.user,
-                                    txt: info
-                                });
                             }
                         } else {
                             eh(err, ec.SPAM_EXISTS_ERROR);

@@ -116,12 +116,7 @@
                             txt: '2) create an XCP wallet; https://wallet.counterwallet.io/; /msg ' + bot.uid + ' [XCP address]'
                         });
                     }
-                } else if(S(msg.user).s !== S(bot.uid).s) { //prevent loops
-                    infomsg.push({
-                        to: msg.user,
-                        txt: '2) create an XCP wallet; https://wallet.counterwallet.io/; /msg ' + bot.uid + ' [XCP address]'
-                    });
-                }
+                } //silent failure
             });
             
             bot.on('chat', function(msg) {

@@ -64,9 +64,7 @@
         }, 1);
         
         bot.on('ready', function() {
-            var info = '1) type /public; then /msg ' + bot.uid + ' #icanhazdarkclams';
-            
-            var meinfo = '/me ' + info;
+            var info = '1) type /public; create a wallet https://counterwallet.io/; then /msg ' + bot.uid + ' [ADDY]';
             
             bot.on('msg', function(msg) {
                 if(msg.txt === '/info' || msg.txt === '!info' || msg.txt === '!darkclam') {

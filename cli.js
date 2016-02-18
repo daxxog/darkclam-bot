@@ -5,7 +5,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0.html  
  */
 
-var DarkclamBot = require('./darkclam-bot.min.js'),
+var DarkclamBot = require('./darkclam-bot.js'),
     JustBot = require('just-bot');
 
 new DarkclamBot(new JustBot(process.argv[3]), process.argv[2]);

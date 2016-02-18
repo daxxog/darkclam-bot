@@ -3,8 +3,8 @@
   "description": "A bot that gets users ready for the darkclam drop.",
   "license": "Apache-2.0",
   "homepage": "https://github.com/daxxog/darkclam-bot",
-  "main": "darkclam-bot.min.js",
-  "version": "0.0.12",
+  "main": "darkclam-bot.js",
+  "version": "0.0.13",
   "engines": {
     "node": ">=4.2.4"
   },
@@ -26,14 +26,14 @@
     "vows": "*"
   },
   "scripts": {
-    "build": "node make.js; cat .gitignore | grep -v darkclam-bot.min.js > .npmignore",
+    "build": "node make.js; cat .gitignore | grep -v darkclam-bot.js > .npmignore",
     "test": "vows test/*",
     "start": "node cli.js",
     "prepublish": "npm run build"
   },
   "files": [
     "cli.min.js",
-    "darkclam-bot.min.js",
+    "darkclam-bot.js",
     "bin/darkclam-bot"
   ],
   "bin": {
@@ -42,7 +42,7 @@
   "dependencies": {
     "async": "^1.5.2",
     "hiredis": "^0.4.1",
-    "just-bot": "0.0.26",
+    "just-bot": "0.0.27",
     "redis": "^2.4.2",
     "request": "^2.69.0",
     "string": "^3.3.1",
